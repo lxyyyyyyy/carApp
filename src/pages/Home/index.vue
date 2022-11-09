@@ -1,53 +1,31 @@
 <template>
-  <div>
-    <type-nav></type-nav>
-    <list-container></list-container>
-    <recommend></recommend>
-    <rank></rank>
-    <like></like>
-    <floor v-for="(floor,index) in floorList" :key="floor.id" :list = "floor"></floor>
-    <brand></brand>
+  <div class="home">
+    首页
+    <Map></Map>
   </div>
 </template>
-
 <script>
-import ListContainer from "./ListContainer";
-import Recommend from "./Recommend";
-import Rank from "./Rank";
-import Like from "./Like";
-import Floor from "./Floor";
-import Brand from "./Brand";
-import { mapState } from "vuex";
-
+import Map from '@/components/map'
 export default {
   name: "Home",
   components: {
-    ListContainer,
-    Recommend,
-    Rank,
-    Like,
-    Floor,
-    Brand,
+    Map
   },
 
   data() {
-    return {};
+    return {
+    };
   },
 
-  mounted() {
-    this.$store.dispatch("floorList");
-    //发送请求，校验token
-    // this.$store.dispatch('getUserInfo');
-  },
-  computed: {
-    ...mapState({
-      floorList: (state) => state.home.floorList,
-    }),
-  },
+  mounted() {},
+  computed: {},
 
   methods: {},
 };
 </script>
 
 <style lang="less" scoped>
+.home{
+  padding-bottom: .5rem;
+}
 </style>

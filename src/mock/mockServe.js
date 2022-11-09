@@ -5,6 +5,23 @@ import Mock from 'mockjs';
 import banner from './banner.json';
 import floor from './floor.json';
 
+
+import getRoute from '../mock/getRoute.json'
+//获取所有车辆的状态
+import getStatusInfoList from '../mock/carStatusInfoList.json'
+
+
+
+
 //mock数据:第一个参数请求地址   第二个参数：请求数据
 Mock.mock("/mock/banner",{code:200,data:banner});//模拟首页大的轮播图的数据
 Mock.mock("/mock/floor",{code:200,data:floor});
+
+
+
+
+Mock.mock("/mock/route",{code:200,data:getRoute});
+
+Mock.mock("/mock/carStatusInfoList",{code:200,data:getStatusInfoList});
+
+

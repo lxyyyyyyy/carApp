@@ -1,28 +1,37 @@
 <template>
   <div id="app">
-    <Header></Header>
     <router-view></router-view>
-    <Footer v-show="$route.meta.show"></Footer>
+    <AppTabbar></AppTabbar>
   </div>
 </template>
 
 <script>
-import Header from './components/Header/index.vue'
-import Footer from './components/Footer/index.vue'
+//  import AppTabbar from '@/components/AppTabbar'
+import AppTabbar from './components/AppTabbar/index.vue'
 export default {
   name: 'App',
   components: {
-    Header,
-    Footer
-  },
+    AppTabbar
+},
   mounted() {
     //当一加载页面就拿到仓库中的数据
-    this.$store.dispatch("categoryList");
+   
     
   },
 }
 </script>
 
-<style>
-
+<style lang="less">
+#app{
+  // font-family: Avenir,Arial, Helvetica, sans-serif;
+  // -webkit-font-smoothing:antia
+  background-color: #efefef;
+  height: 100%;
+}
+html,body{
+  height: 100%;
+}
+html{
+  //一个rem
+}
 </style>

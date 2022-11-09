@@ -40,39 +40,5 @@ let router = new VueRouter({
 })
 
 //设置全局守卫
-router.beforeEach(async (to, from, next) => {
-    let token = store.state.user.token;
-    let name = store.state.user.userInfo.name;
-    if (token) {
-        if (to.path == '/login' || to.path == '/register') {
-            next('/');
 
-        } else {
-            if (name) {
-                next();
-            } else {
-                try {
-                    await store.dispatch('getUserInfo');
-                    next();
-
-                } catch (error) {
-                    await store.dispatch('logout');
-                    next('/login')
-                }
-            }
-        }
-    } else {
-        next()
-        //未登录：不能去交易相关、不能去支付相关【pay|paysuccess】、不能去个人中心
-        //未登录去上面这些路由-----登录
-        let toPath = to.path;
-        if (toPath.indexOf('/trade') != -1 || toPath.indexOf('/pay') != -1 || toPath.indexOf('/center') != -1) {
-            //把未登录的时候向去而没有去成的信息，存储于地址栏中【路由】
-            next('/login?redirect=' + toPath);
-        } else {
-            //去的不是上面这些路由（home|search|shopCart）---放行
-            next();
-        }
-    }
-})
 export default router
